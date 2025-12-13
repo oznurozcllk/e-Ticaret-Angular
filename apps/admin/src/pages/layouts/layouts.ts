@@ -3,7 +3,7 @@ import Breadcrumb from './breadcrumb';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { navigations } from '../../navigation';
 import { NavPipe } from '../../pipes/nav-pipe';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
      RouterLinkActive,
      CommonModule,
      FormsModule,
-    NavPipe
+    NavPipe,
+    DatePipe
    ],
   templateUrl: './layouts.html',
   encapsulation: ViewEncapsulation.None,
@@ -20,5 +21,13 @@ import { FormsModule } from '@angular/forms';
 })
 export default class Layouts {
 readonly search = signal<string>("");
+readonly time = signal<Date | string>("");
   readonly navigations =computed(()=> navigations);
+
+  constructor(){
+    setInterval(()=>{
+         this.time.set(new Date( ))
+    },1000);
+   
+  }
 }
