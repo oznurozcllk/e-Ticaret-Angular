@@ -1,11 +1,13 @@
 <app-blank pageTitle="Ürünler" [breadcrumbs]="[{title:'Ürünler', url:'/products ', icon:'box'}]"></app-blank>
-<p-table [value]="data()" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="data()" [loading]="loading()" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
         <tr>
             <th>Ürün Adı</th>
+            <th>Kategori</th>
             <th>Ürün Resmi</th>
             <th>Fiyat</th>
             <th>Stok</th>
+            
             <th style="width: 120px; text-align: center;">İşlemler</th>
         </tr>
     </ng-template>
@@ -13,6 +15,7 @@
     <ng-template pTemplate="body" let-product>
         <tr>
             <td>{{ product.name }}</td>
+            <td>{{ product.categoryName }}</td>
             <td>
                 <img [src]="product.imageUrl" [alt]="product.name" height="70" style="border-radius: 5px;">
             </td>
