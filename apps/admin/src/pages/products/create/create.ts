@@ -3,7 +3,7 @@ import Blank from '../../../components/blank';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-//import { Location } from '@angular/common';
+import { FlexiToastService } from 'flexi-toast';
 
 @Component({
   imports: [Blank, FormsModule],
@@ -14,14 +14,20 @@ import { Router } from '@angular/router';
 export default class ProductCreate {
   readonly #http = inject(HttpClient);
 readonly #router=inject(Router);
-//readonly #location = inject(Location)
+readonly #toast= inject(FlexiToastService)
 
 save(form:NgForm){
+ 
  if(!form.valid) return;
- console.log(form.value);
- this.#http.post("http://localhost:3000/products", form.value).subscribe(()=>{
+this.#http.post("http://localhost:3000/products",form.value).subscribe(()=>{
  this.#router.navigateByUrl("/products");
-//this.#location.back();
- })
+  this.#toast.showToast("Bşarılı","ürün başarıyla eklendi",'success');
+
+
+})
+   
+
+ 
 }
+
 }

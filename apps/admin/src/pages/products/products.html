@@ -35,7 +35,7 @@
             <td>{{ product.stock }}</td>
             
             <td style="text-align: center;">
-                <div style="display: flex; gap: 10px; justify-content: center;">
+                <div  style="display: flex; gap: 10px; justify-content: center;">
                     <p-button 
                         icon="pi pi-pencil" 
                         severity="success" 
@@ -44,12 +44,14 @@
                         tooltipPosition="top">
                     </p-button>
 
-                    <p-button 
+                    <p-button
+                    (click)="delete(product.id)" 
                         icon="pi pi-trash" 
                         severity="danger" 
                         [outlined]="true" 
                         pTooltip="Sil" 
-                        tooltipPosition="top">
+                        tooltipPosition="top"
+                        >
                     </p-button>
                 </div>
             </td>
